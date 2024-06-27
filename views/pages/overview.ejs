@@ -1,0 +1,46 @@
+<script src="/ztext.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+<style>
+    .roboto-condensed-thin {
+        font-family: "Roboto Condensed", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 90;
+        font-style: normal;
+    }
+    .z-text {
+    /* Tip: Apply CSS transforms here */
+    /* rotateX() == up/down */
+    /* rotateY() == left/right */
+    transform: rotateX(5deg) rotateY(-5deg);
+    }
+
+  
+
+    .overview-entry{
+        font-size: 2.5em;
+        kerning: 0px;
+        margin: 0px;;
+    }
+
+    #bmr{
+        color: #B90169;
+    }
+
+    #cals{
+        color: #E74C01;
+    }
+
+    .under{
+        color: #784DBA;
+    }
+
+    .over{
+        color: red;
+    }
+</style>
+
+<h3 class="overview-entry roboto-condensed-thin">Basal Metabolic Rate: <span data-z-perspective="2000px" data-z data-z-layers="25" data-z-depth="1em" data-z-fade="true" data-z-event="pointer" data-z-eventRotation="20deg" id="bmr"><%=bmr%></span></h3>
+<h3 class="overview-entry roboto-condensed-thin">Calories Today: <span data-z-perspective="2000px" data-z data-z-layers="25" data-z-depth="1em" data-z-fade="true" data-z-event="pointer" data-z-eventRotation="20deg" id="cals"><%=cals%></span></h3>
+<h3 class="overview-entry roboto-condensed-thin">Difference: <span data-z-perspective="2000px" data-z data-z-layers="25" data-z-depth="1em" data-z-fade="true" data-z-event="pointer" data-z-eventRotation="20deg" id="diff" class="<%=diff['thresh']%>"> <%=diff['diff']%></span></h3>
+

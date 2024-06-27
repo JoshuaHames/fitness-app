@@ -1,0 +1,61 @@
+<style>
+
+    .window-container{
+        margin: 5%;
+        width: 90%;
+        font-size: 10px;
+        display: inline-grid;
+        grid-template-columns: auto auto;
+    }
+
+    .window-item{
+        padding: 10px;
+        margin-top: 10px;
+        font-size: 20;
+        text-align: left;      
+    }
+
+    .window-label{
+        background-color: #2A0662;
+        color: #D54B99;
+        text-shadow:1px 1px #784DBA;
+        padding: 10px;
+        margin-top: 10px;
+        font-size: 20;
+        text-align: left;        
+    }
+
+    .primary {
+        width: 20%;
+        margin-left: 40%;
+        font-weight: bold;
+        margin-right: 40%;
+        height: 40px;
+        border-radius: 15px;
+    }
+
+    #entry-form{
+        background-color: #5E2CAD;
+        padding: 15px;
+        border-radius: 15px;
+    }
+
+    #exitbtn {
+        display: none;
+    }
+</style>
+<button id="exitbtn" onclick="exit()">X</button>
+<form id="entry-form" hx-post="/submit-entry">
+    <div class="window-container roboto-condensed-thin">
+            <label class="window-label">Item</label>
+            <input type="text" class="form-control window-item" name="entry-name">
+
+            <label class="window-label">Calories</label>
+            <input type="text" class="form-control window-item" name="entry-calories">
+
+            <label class="window-label">Weight</label>
+            <input type="text" class="form-control window-item" name="weight">
+    </div>
+
+    <button class="btn primary roboto-condensed-thin">Submit</button>
+</form>

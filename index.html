@@ -1,0 +1,96 @@
+<script src="https://unpkg.com/htmx.org@2.0.0"></script>
+<script src="/socket.io/socket.io.js"></script>
+
+<!--
+    TODO: Make index.html display the BMR current calorie count and deficate, this will need to be it's own view that renders and displays info passed
+    it it from JS
+-->
+
+<script>
+    var socket = io();
+
+    socket.on('submitted', function(){
+        htmx.trigger("#entry-window", "reload");
+        htmx.trigger("#today-entries", "reload");
+    });
+
+    socket.on('updatedvars', function() {
+
+        setTimeout(function() {
+            htmx.trigger("#overview-banner", "reload")
+        }, 1000)
+    })
+
+    function exit(){
+        let form = document.getElementById("entry-window");
+        form.style.display = "none";
+    }
+
+</script>
+
+<style>
+    body{
+        background-color: #150330;
+        margin: 0;
+    }
+
+    .grid-container{
+        display: inline-grid;
+        grid-template-columns: auto auto auto;
+    }
+
+    #main-content{
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+    }
+
+
+    #entry-window{
+        top: 50%;
+        left: 50%;
+        place-self: center;
+        grid-column: 2;
+        grid-row: 2;
+        width: 450px;
+        height: 300px;
+        z-index: 100;
+    }
+
+    #overview-banner {
+        text-align: center;
+        margin-top: 50px;
+        color: white;
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    #today-entries{
+        grid-column: 2;
+        grid-row: 3;
+        display: inline-block;
+        justify-self: center;
+        width: 450px;
+        height: 250px;
+        Overflow-y:auto;
+        overflow-x: hidden;
+    }
+</style>
+
+
+<body>
+    <div id="main-content" class="grid-container">
+        <div id="overview-banner" class="grid-item" hx-get="/show-stats" hx-trigger="load, reload">
+
+        </div>
+
+        <div id="entry-window" class="grid-item" hx-get="/show-form" hx-trigger="load, reload">
+
+        </div>
+
+        <div id="today-entries" class="grid-item" hx-get="/show-today" hx-trigger="load, reload">
+        
+        </div>
+
+    </div>
+</body>
